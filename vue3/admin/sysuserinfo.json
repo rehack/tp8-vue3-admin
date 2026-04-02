@@ -1,0 +1,225 @@
+{
+    "id": 1,
+    "username": "admin",
+    "realname": "administrator",
+    "phone": "",
+    "email": null,
+    "sex": 1,
+    "avatar": "avatar\/avatar_1.jpeg",
+    "dept_id": 1,
+    "login_ip": "",
+    "login_time": 0,
+    "status": 1,
+    "show": 1,
+    "create_time": null,
+    "roles": [
+        "系统管理员"
+    ],
+    "dept": {
+        "id": 1,
+        "department_name": "管理部",
+        "pid": 0,
+        "status": 1,
+        "sort": 99
+    },
+    "roles_scope": [
+        "all"
+    ],
+    "menus": [
+        {
+            "id": 1,
+            "title": "客户管理",
+            "iconCls": "Phone",
+            "path": "\/customer",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 1
+            }
+        },
+        {
+            "id": 2,
+            "title": "腾讯推广",
+            "iconCls": "Coin",
+            "path": "\/projects",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 2
+            }
+        },
+        {
+            "id": 3,
+            "title": "商务数据",
+            "iconCls": "DataLine",
+            "path": "\/customerdata",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 3
+            }
+        },
+        {
+            "id": 4,
+            "title": "项目数据",
+            "iconCls": "DataAnalysis",
+            "path": "\/projectData",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 4
+            }
+        },
+        {
+            "id": 5,
+            "title": "财务数据",
+            "iconCls": "Money",
+            "path": "\/financeData",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 5
+            }
+        },
+        {
+            "id": 6,
+            "title": "档案中心",
+            "iconCls": "CopyDocument",
+            "path": "\/archives",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 6
+            }
+        },
+        {
+            "id": 7,
+            "title": "南衡智库",
+            "iconCls": "MagicStick",
+            "path": "\/thinktank",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 7
+            }
+        },
+        {
+            "id": 8,
+            "title": "个人中心",
+            "iconCls": "UserFilled",
+            "path": "\/personal",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 8
+            }
+        },
+        {
+            "id": 9,
+            "title": "系统设置",
+            "iconCls": "Setting",
+            "path": "\/settings",
+            "component": "Layout",
+            "pid": 0,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 9
+            }
+        },
+        {
+            "id": 11,
+            "title": "客户池",
+            "iconCls": null,
+            "path": "custpool",
+            "component": "customer\/CustPool",
+            "pid": 1,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 11
+            }
+        },
+        {
+            "id": 21,
+            "title": "职员管理",
+            "iconCls": null,
+            "path": "staff",
+            "component": "settings\/Staff",
+            "pid": 9,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 21
+            }
+        },
+        {
+            "id": 22,
+            "title": "数据字典",
+            "iconCls": null,
+            "path": "dataDictionary",
+            "component": "settings\/DataDictionary",
+            "pid": 9,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 22
+            }
+        },
+        {
+            "id": 23,
+            "title": "权限设置",
+            "iconCls": null,
+            "path": "permission",
+            "component": "settings\/Auth",
+            "pid": 9,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 23
+            }
+        },
+        {
+            "id": 24,
+            "title": "登录日志",
+            "iconCls": null,
+            "path": "loginlog",
+            "component": "settings\/LoginLog",
+            "pid": 9,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 24
+            }
+        },
+        {
+            "id": 25,
+            "title": "系统日志",
+            "iconCls": null,
+            "path": "oplog",
+            "component": "settings\/Oplog",
+            "pid": 9,
+            "status": 1,
+            "pivot": {
+                "role_id": 1,
+                "menu_id": 25
+            }
+        }
+    ]
+}
