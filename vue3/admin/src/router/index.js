@@ -74,43 +74,67 @@ function getStoredUserInfo() {
     }
 }
 
-// 创建路由实例
-const userInfo = getStoredUserInfo()
-const dynamicRoutes = generateRoutesFromMenus(userInfo?.menus)
+// 创建基础路由（不含动态菜单）
+const baseRoutes = [
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('../views/login/index.vue'),
+        meta: { title: '登录' },
+    },
+    {
+        path: '/',
+        component: () => import('../layout/index.vue'),
+        name: 'root',
+        redirect: '/dashboard',
+        children: [
+            {
+                path: 'dashboard',
+                name: 'Dashboard',
+                component: () => import('../views/dashboard/index.vue'),
+                meta: { title: '首页' },
+            },
+        ],
+    },
+    // 404 页面
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('../views/notFound.vue'),
+        meta: { title: '页面不存在' },
+    },
+]
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-        {
-            path: '/login',
-            name: 'Login',
-            component: () => import('../views/login/index.vue'),
-            meta: { title: '登录' },
-        },
-        {
-            path: '/',
-            component: () => import('../layout/index.vue'),
-            name: 'root',
-            redirect: '/dashboard',
-            children: [
-                {
-                    path: 'dashboard',
-                    name: 'Dashboard',
-                    component: () => import('../views/dashboard/index.vue'),
-                    meta: { title: '首页' },
-                },
-                ...dynamicRoutes,
-            ],
-        },
-        // 404 页面
-        {
-            path: '/:pathMatch(.*)*',
-            name: 'NotFound',
-            component: () => import('../views/notFound.vue'),
-            meta: { title: '页面不存在' },
-        },
-    ],
+    routes: baseRoutes,
 })
+
+// 动态添加菜单路由
+function addMenuRoutes(menus) {
+    const newRoutes = generateRoutesFromMenus(menus)
+    newRoutes.forEach(route => {
+        // 找到根路由，将动态路由添加到其 children 中
+        const rootRoute = router.getRoutes().find(r => r.path === '/')
+        if (rootRoute) {
+            router.addRoute('root', route)
+        }
+    })
+}
+
+// 初始化路由（根据 localStorage 中的用户信息）
+function initRoutes() {
+    const userInfo = getStoredUserInfo()
+    if (userInfo?.menus) {
+        addMenuRoutes(userInfo.menus)
+    }
+}
+
+// 立即初始化一次（处理刷新时恢复路由）
+initRoutes()
+
+// 导出方法供外部调用
+export { addMenuRoutes }
 
 // 路由守卫
 router.beforeEach((to, from) => {

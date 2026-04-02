@@ -53,6 +53,7 @@ import { ElMessage, ElNotification } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
 import request from '../../request'
 import { useUserStore } from '../../stores/user'
+import { addMenuRoutes } from '../../router'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -108,12 +109,15 @@ async function handleLogin() {
         // 4. 保存用户信息和菜单
         userStore.setUserInfo(userInfoRes)
 
+        // 5. 添加动态菜单路由
+        addMenuRoutes(userInfoRes.menus)
+
         ElNotification.success({
             title: '登录成功',
             message: '正在跳转...',
         })
 
-        // 5. 跳转到首页
+        // 6. 跳转到首页
         await router.replace('/dashboard')
     } catch (error) {
         console.error('登录失败:', error)
